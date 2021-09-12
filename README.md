@@ -72,7 +72,7 @@ Instance of class Parallax
 
 Be use for select an element
 
-## options
+## Options
 
 |  Name   | Type  | Default | Description |
 |  ----  | ----  | ---- | ---- |
@@ -84,6 +84,15 @@ Be use for select an element
 | scrollElement  | ParallaxSelector | document | If page's scroll element is not Document Object, use this option to specify a new |
 | customProgress  | boolean | false | Enable "customProgress" mode. In this mode, the animation progress will not base on scroll. It need to call the 'update' method to set(see [example](https://liaoyuesheng.github.io/parallax/#custom-progress)). The options `container`, `startTop` and `endTop` will be invalid |
 | on | object | | Add event listener |
+
+## Element's Attributes
+
+|  Name  | Default | Description |
+|  ----  | ---- | ---- |
+| parallax-start-style  |  | The style of animation start |
+| parallax-end-style  |  | The style of animation end |
+| parallax-start-progress  | 0 | The progress of animation start |
+| parallax-end-progress  | 1 | The progress of animation end |
 
 ## Instance properties
 
