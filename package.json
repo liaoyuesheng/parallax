@@ -1,0 +1,49 @@
+{
+  "name": "@liaoys/parallax",
+  "version": "1.0.0",
+  "description": "A JavaScript library that makes parallax animations for a website.It effects for any elements and any css style that has number value",
+  "homepage": "https://liaoyuesheng.github.io/parallax/",
+  "author": "liaoyuesheng",
+  "license": "ISC",
+  "keywords": [
+    "parallax",
+    "progress",
+    "animation"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liaoyuesheng/parallax"
+  },
+  "main": "dist/parallax.cjs.js",
+  "module": "dist/parallax.esm.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "rollup": "./node_modules/.bin/rollup",
+    "eslint": "./node_modules/.bin/eslint"
+  },
+  "scripts": {
+    "dev": "rollup --config rollup.dev.config.js --watch",
+    "build": "rollup -c",
+    "lint": "eslint src",
+    "lint-fix": "eslint --fix src"
+  },
+  "devDependencies": {
+    "@rbnlffl/rollup-plugin-eslint": "^2.0.0",
+    "@rollup/plugin-commonjs": "^20.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.4",
+    "@rollup/plugin-typescript": "^8.2.5",
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
+    "@typescript-eslint/parser": "^4.31.0",
+    "eslint": "^7.32.0",
+    "rollup": "^2.56.3",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-serve": "^1.1.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "typescript": "^4.4.3"
+  },
+  "dependencies": {
+    "@liaoys/events": "^1.0.0",
+    "lodash-es": "^4.17.21",
+    "tslib": "^2.3.1"
+  }
+}

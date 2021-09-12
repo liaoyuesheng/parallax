@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/vs.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+    <script src="parallax.esm.js" type="module"></script>
+    <title>Parallax Examples</title>
+</head>
+<body>
+<div id="sea-sunset">
+    <div class="sea-sunset-bgs">
+        <div class="sea-sunset-bg"
+             style="background-image: url(images/sea-sunset/bg.jpg);"
+             parallax-start-style="transform: translate(0,0)"
+             parallax-end-style="transform: translate(0px,-20px)"
+        ></div>
+        <div class="sea-sunset-bg"
+             style="background-image: url(images/sea-sunset/cloud-height.png)"
+             parallax-start-style="transform: translate(0,0)"
+             parallax-end-style="transform: translate(0,-80px)"
+        ></div>
+        <div class="sea-sunset-bg"
+             style="background-image: url(images/sea-sunset/cloud-low.png)"
+             parallax-start-style="transform: translate(0,0)"
+             parallax-end-style="transform: translate(0,-350px)"
+        ></div>
+        <div class="sea-sunset-bg"
+             style="background-image: url(images/sea-sunset/water.png)"
+             parallax-start-style="transform: translate(0,0)"
+             parallax-end-style="transform: translate(0,-500px)"
+        ></div>
+        <div class="sea-sunset-title"
+             parallax-start-progress="0.6"
+             parallax-start-style="opacity: 1;transform: scale(1)"
+             parallax-end-progress="0.9"
+             parallax-end-style="opacity: 0;transform: scale(0)"
+        >Parallax</div>
+    </div>
+    <div class="sea-sunset-fg" style="background-image: url(images/sea-sunset/ground.png)">
+        <div class="sea-sunset-fg-extend">
+            <div class="sea-sunset-text">Welcome to use Parallax</div>
+        </div>
+    </div>
+</div>
+<div class="content content-sea-sunset">
+    <pre><code class="code language-html" data-for="#sea-sunset"></code></pre>
+    <pre><code class="code language-javascript" data-for="#demo-sunset-js"></code></pre>
+</div>
+
+<script class="code-demo" type="module" id="demo-sunset-js">
+import Parallax from './parallax.esm.js'
+
+new Parallax({
+  container: '#sea-sunset',
+  elements: '.sea-sunset-bg,.sea-sunset-title',
+  startTop: 0,
+  endTop: -900,
+  on: {
+    progress(parallax, progress) {
+      const elText = parallax.container.querySelector('.sea-sunset-text')
+      elText.classList.toggle('show', progress > 0.8)
+    },
+  },
+})
+</script>
+
+<div class="content">
+<h4 id="custom-progress">Another Example: "customProgress" mode</h4>
+<p>In this mode, the animation progress will not base on scroll. It need to call the 'update' method to set</p>
+<p>For the example below, it's progress is set by the instance to the center of picture</p>
+<p>Try moving the cursor over the picture</p>
+<div id="forest" class="forest">
+    <div class="forest-element forest-bg"
+         style="background-image: url(images/forest/bg.jpg)"
+         parallax-start-style="opacity: 0"
+         parallax-end-style="opacity: 1"
+    ></div>
+    <div class="forest-element leaf leaf1"
+         style="background-image: url(images/forest/leaf1.png)"
+         parallax-start-style="transform: scale(2)"
+         parallax-end-style="transform: scale(1)"
+    ></div>
+    <div class="forest-element leaf leaf2"
+         style="background-image: url(images/forest/leaf2.png)"
+         parallax-start-style="transform: scale(2)"
+         parallax-end-style="transform: scale(1)"
+    ></div>
+    <div class="forest-element leaf leaf3"
+         style="background-image: url(images/forest/leaf3.png)"
+         parallax-start-style="transform: scale(2)"
+         parallax-end-style="transform: scale(1)"
+    ></div>
+    <div class="forest-element leaf leaf4"
+         style="background-image: url(images/forest/leaf4.png)"
+         parallax-start-style="transform: scale(2)"
+         parallax-end-style="transform: scale(1)"
+    ></div>
+    <div class="forest-element firefly"
+         style="background-image: url(images/forest/firefly.png)"
+         parallax-start-style="opacity: 0"
+         parallax-end-style="opacity: 1"
+    ></div>
+</div>
+<pre><code class="code language-html" data-for="#forest"></code></pre>
+<pre><code class="code language-javascript" data-for="#demo-forest-js"></code></pre>
+</div>
+
+<script type="module" id="demo-forest-js">
+import Parallax from './parallax.esm.js'
+
+const parallax = new Parallax({
+  elements: '#forest .forest-element',
+  customProgress: true,
+})
+
+parallax.update(0)
+
+const getCloseCenterRatio = (layerW, layerH, layerX, layerY) => {
+  const centerX = layerX - layerW / 2
+  const centerY = layerY - layerH / 2
+  const whRatio = layerW / layerH
+  const xyRatio = Math.abs(centerX / centerY)
+  const useCoordinate = xyRatio > whRatio ? centerX : centerY
+  const userSide = xyRatio > whRatio ? layerW : layerH
+  return 1 - (Math.abs(useCoordinate) / (userSide / 2))
+}
+
+document.querySelector('#forest .firefly').addEventListener('mousemove', (e) => {
+  const {clientX, clientY, currentTarget: layer} = e;
+  const layerRect = layer.getBoundingClientRect()
+  const layerW = layerRect.width
+  const layerH = layerRect.height
+  const layerX = clientX - layerRect.left
+  const layerY = clientY - layerRect.top
+  const progress = getCloseCenterRatio(layerW, layerH, layerX, layerY)
+  parallax.update(progress);
+})
+</script>
+
+<script>
+Array.from(document.querySelectorAll('.code')).forEach((code) => {
+  const target = document.querySelector(code.getAttribute('data-for'))
+  code.textContent = code.classList.contains('language-html') ? target.outerHTML : target.textContent
+  hljs.highlightElement(code)
+})
+</script>
+</body>
+</html>
