@@ -1,0 +1,135 @@
+html {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI Variable", "Segoe UI", system-ui, ui-sans-serif, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.content {
+  position: relative;
+  background-color: white;
+  overflow: hidden;
+  padding: 0 16px;
+}
+
+/*
+demo: sea-sunset
+*/
+
+.sea-sunset {
+  position: relative;
+}
+
+.sea-sunset-bgs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 929px;
+}
+
+.sea-sunset-bg,
+.sea-sunset-fg {
+  background-position: center top;
+}
+
+.sea-sunset-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.sea-sunset-fg {
+  position: relative;
+  z-index: 1;
+  height: 1200px;
+  padding-top: 929px;
+  background-repeat: repeat-x;
+}
+
+.sea-sunset-fg-extend {
+  height: 100%;
+  background-color: #364058;
+  overflow: hidden;
+}
+
+.sea-sunset-title {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  font-size: 100px;
+  color: #ef9b5b;
+  text-align: center;
+}
+
+.sea-sunset-text {
+  opacity: 0;
+  display: block;
+  font-size: 80px;
+  color: white;
+  text-align: center;
+  margin-top: 50px;
+  transition: .3s;
+}
+
+.sea-sunset-text.show {
+  opacity: 1;
+}
+
+.content-sea-sunset {
+  background-color: #364058;
+}
+
+/*
+demo: forest
+*/
+.forest {
+  position: relative;
+  width: 500px;
+  height: 750px;
+  margin: auto;
+  overflow: hidden;
+  background-color: #011f1e;
+}
+
+.forest-element {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-size: cover;
+}
+
+.leaf {
+  transform: scale(2);
+}
+
+.leaf1 {
+  transform-origin: left top;
+}
+
+.leaf2 {
+  transform-origin: right top;
+}
+
+.leaf3 {
+  transform-origin: left bottom;
+}
+
+.leaf4 {
+  transform-origin: right bottom;
+}
+
+.firefly {
+  opacity: 0;
+}
