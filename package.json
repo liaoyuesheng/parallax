@@ -1,6 +1,6 @@
 {
   "name": "@liaoys/parallax",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A JavaScript library that makes parallax animations for a website.It effects for any elements and any css style that has number value",
   "homepage": "https://liaoyuesheng.github.io/parallax/",
   "author": "liaoyuesheng",
