@@ -1,4 +1,4 @@
-export declare type ParallaxSelector = string | HTMLElement | Array<HTMLElement> | ArrayLike<HTMLElement>;
+export declare type ParallaxSelector = string | HTMLElement | NodeList | HTMLCollection | Array<HTMLElement> | ArrayLike<HTMLElement>;
 export interface ParallaxOptions {
     container?: ParallaxSelector;
     elements?: ParallaxSelector;
@@ -7,7 +7,7 @@ export interface ParallaxOptions {
     endTop?: number;
     scrollElement?: ParallaxSelector;
     customProgress?: boolean;
-    on: {
+    on?: {
         [eventName: string]: (...args: any[]) => void;
     };
 }
