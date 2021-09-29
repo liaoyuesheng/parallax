@@ -376,7 +376,7 @@ class Watcher {
 const EVENT_NAMES = ['init', 'progress'];
 function checkEventName(eventName) {
     if (EVENT_NAMES.indexOf(eventName) === -1) {
-        console.warn(`[parallax warn]: eventName must one of members of Array ${EVENT_NAMES}. received ${eventName}.`);
+        console.warn(`[parallax warn]: Event name must one of members of Array ${EVENT_NAMES}. received ${eventName}.`);
     }
 }
 function getElements(el, container = document) {
@@ -485,7 +485,7 @@ class Parallax {
         }
         else {
             if (this.options.customProgress) {
-                console.warn('In customProgress mode, the "progress" argument is required and must be of type number');
+                console.warn('[parallax warn]: In customProgress mode, the "progress" argument is required and must be of type number');
                 return;
             }
             this._updateProgress();
